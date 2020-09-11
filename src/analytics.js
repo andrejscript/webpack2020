@@ -2,7 +2,7 @@ function createAnalytics() {
     let counter = 0;
     let destroyed = false;
 
-    console.log('111');
+    console.log('1111');
 
     const listener = () => counter++;
 

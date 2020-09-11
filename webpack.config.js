@@ -3,11 +3,12 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 module.exports = {
+  cache: false,
   context: path.resolve(__dirname, 'src'),
   mode: 'development',
   entry: {
       main: './index.js',
-      analytics: './analytics.js'
+      analytics: './analytics.js',
   },
   output: {
     filename: '[name].[contenthash].js',
@@ -15,7 +16,7 @@ module.exports = {
   },
   plugins: [
     new HTMLWebpackPlugin({
-      template: './index.html'
+      template: './index.html',
     }),
     new CleanWebpackPlugin(),
   ],
@@ -24,6 +25,12 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.(png|jpe?g|svg|gif)$/,
+        use: [{
+          loader: 'file-loader',
+        },]
       }
     ]
   }
